@@ -36,9 +36,11 @@
     self.segmentedPager.segmentedControl.backgroundColor = [UIColor whiteColor];
     self.segmentedPager.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
     self.segmentedPager.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1]};
-    self.segmentedPager.segmentedControl.selectionIndicatorColor = [UIColor blackColor];
-    self.segmentedPager.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleArrow;
-    self.segmentedPager.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+    self.segmentedPager.segmentedControl.selectionIndicatorColor = [UIColor redColor];
+    self.segmentedPager.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleBox;
+    self.segmentedPager.segmentedControl.boxCornerRadius = 10;
+    self.segmentedPager.segmentedControl.boxTopOffset = 0;
+    self.segmentedPager.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationNone;
     
     self.segmentedPager.segmentedControlPosition = MXSegmentedControlPositionBottom;
     
@@ -54,7 +56,7 @@
 #pragma mark <MXPageControllerDataSource>
 
 - (NSString *)segmentedPager:(MXSegmentedPager *)segmentedPager titleForSectionAtIndex:(NSInteger)index {
-    return @[@"Simple", @"Parallax", @"Storyboard"][index];
+    return @[@" Simple ", @" Parallax ", @" Storyboard "][index];
 }
 
 @end
