@@ -28,7 +28,6 @@
 @property (nonatomic, strong) MXScrollView          *contentView;
 @property (nonatomic, strong) HMSegmentedControl    *segmentedControl;
 @property (nonatomic, strong) MXPagerView           *pager;
-
 @property (nonatomic, strong) MXProgressBlock progressBlock;
 @end
 
@@ -87,8 +86,8 @@
 }
 
 - (void)scrollToTopAnimated:(BOOL)animated {
-    [_contentView setContentOffset:CGPointMake(0, -self.contentView.parallaxHeader.height)
-                          animated:animated];
+//    [_contentView setContentOffset:CGPointMake(0, -self.contentView.parallaxHeader.height)
+//                          animated:animated];
 }
 
 #pragma mark Layout
@@ -157,13 +156,25 @@
 
 #pragma mark Properties
 
+
 - (MXScrollView *)contentView {
     if (!_contentView) {
         
         // Create scroll-view
         _contentView = [[MXScrollView alloc] init];
+        _contentView.backgroundColor = [UIColor whiteColor];
+
         _contentView.delegate = self;
         [self addSubview:_contentView];
+        
+        _refreshControl = [[UIRefreshControl alloc] init];
+        [_contentView addSubview:_refreshControl];
+        _refreshControl.bounds = CGRectMake(_refreshControl.bounds.origin.x,
+                                           200,
+                                           _refreshControl.bounds.size.width,
+                                           _refreshControl.bounds.size.height);
+
+
     }
     return _contentView;
 }
